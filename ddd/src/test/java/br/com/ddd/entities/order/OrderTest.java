@@ -39,7 +39,7 @@ public class OrderTest extends BaseTeste {
 
         final var exception = Assertions.assertThrows(DomainException.class, () -> new Order(UUID.randomUUID().toString(), UUID.randomUUID().toString(), List.of()));
 
-        Assertions.assertEquals("Items is required", exception.getMessage());
+        Assertions.assertEquals("Order must have at least one item", exception.getMessage());
 
     }
 

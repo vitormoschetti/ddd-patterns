@@ -25,7 +25,7 @@ public class Order {
         if (Objects.isNull(this.customerId) || this.customerId.isEmpty())
             throw new DomainException("CustomerId is required");
         if (Objects.isNull(this.items) || this.items.isEmpty())
-            throw new DomainException("Items is required");
+            throw new DomainException("Order must have at least one item");
     }
 
     public BigDecimal total() {

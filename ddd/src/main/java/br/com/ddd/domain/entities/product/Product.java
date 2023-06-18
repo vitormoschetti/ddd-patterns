@@ -37,4 +37,7 @@ public class Product {
         this.validate();
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
 }

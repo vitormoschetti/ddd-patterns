@@ -2,8 +2,8 @@ package br.com.ddd.entities.customer;
 
 
 import br.com.ddd.BaseTeste;
-import br.com.ddd.domain.exception.DomainException;
 import br.com.ddd.domain.entities.customer.Customer;
+import br.com.ddd.domain.exception.DomainException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -76,6 +76,36 @@ public class CustomerTest extends BaseTeste {
         customer.activate();
 
         Assertions.assertEquals(Boolean.TRUE, customer.isActive());
+
+    }
+
+    @Test
+    @DisplayName("should add reward points")
+    public void shouldAddRewardPoints() {
+
+        final var customer = this.buildValidCustomer();
+
+        Assertions.assertEquals(0L, customer.getRewardPoints());
+
+        customer.addRewardPoints(10L);
+
+        Assertions.assertEquals(10L, customer.getRewardPoints());
+
+        customer.addRewardPoints(10L);
+
+        Assertions.assertEquals(20L, customer.getRewardPoints());
+
+    }
+
+    @Test
+    @DisplayName("should throw domain exception when reward points is less than 0")
+    public void shouldThrowDomainExceptionWhenRewardPointsIsLessThanZero() {
+
+        final var customer = this.buildValidCustomer();
+
+        final var exception = Assertions.assertThrows(DomainException.class, () -> customer.addRewardPoints(-10L));
+
+        Assertions.assertEquals("Reward Points must be greater equal zero", exception.getMessage());
 
     }
 
