@@ -1,8 +1,8 @@
-package br.com.ddd.domain.services;
+package br.com.ddd.domain.service;
 
-import br.com.ddd.domain.entities.customer.Customer;
-import br.com.ddd.domain.entities.order.Order;
-import br.com.ddd.domain.entities.order.OrderItem;
+import br.com.ddd.domain.entity.customer.Customer;
+import br.com.ddd.domain.entity.order.Order;
+import br.com.ddd.domain.entity.order.OrderItem;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

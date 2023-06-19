@@ -1,4 +1,4 @@
-package br.com.ddd.domain.entities.customer;
+package br.com.ddd.domain.entity.customer;
 
 import br.com.ddd.domain.exception.DomainException;
 

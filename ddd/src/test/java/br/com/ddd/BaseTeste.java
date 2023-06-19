@@ -1,10 +1,10 @@
 package br.com.ddd;
 
-import br.com.ddd.domain.entities.customer.AddressVO;
-import br.com.ddd.domain.entities.customer.Customer;
-import br.com.ddd.domain.entities.order.Order;
-import br.com.ddd.domain.entities.order.OrderItem;
-import br.com.ddd.domain.entities.product.Product;
+import br.com.ddd.domain.entity.customer.AddressVO;
+import br.com.ddd.domain.entity.customer.Customer;
+import br.com.ddd.domain.entity.order.Order;
+import br.com.ddd.domain.entity.order.OrderItem;
+import br.com.ddd.domain.entity.product.Product;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

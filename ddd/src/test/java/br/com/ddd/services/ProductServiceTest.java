@@ -1,7 +1,7 @@
 package br.com.ddd.services;
 
 import br.com.ddd.BaseTeste;
-import br.com.ddd.domain.services.ProductService;
+import br.com.ddd.domain.service.ProductService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

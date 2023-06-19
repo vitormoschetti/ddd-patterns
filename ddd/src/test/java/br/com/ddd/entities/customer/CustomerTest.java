@@ -2,7 +2,7 @@ package br.com.ddd.entities.customer;
 
 
 import br.com.ddd.BaseTeste;
-import br.com.ddd.domain.entities.customer.Customer;
+import br.com.ddd.domain.entity.customer.Customer;
 import br.com.ddd.domain.exception.DomainException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

@@ -1,7 +1,7 @@
 package br.com.ddd.entities.order;
 
 import br.com.ddd.BaseTeste;
-import br.com.ddd.domain.entities.product.Product;
+import br.com.ddd.domain.entity.product.Product;
 import br.com.ddd.domain.exception.DomainException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

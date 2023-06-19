@@ -1,6 +1,6 @@
-package br.com.ddd.domain.services;
+package br.com.ddd.domain.service;
 
-import br.com.ddd.domain.entities.product.Product;
+import br.com.ddd.domain.entity.product.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
