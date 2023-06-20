@@ -1,4 +1,4 @@
-package br.com.ddd.services;
+package br.com.ddd.domain.services;
 
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.service.OrderService;

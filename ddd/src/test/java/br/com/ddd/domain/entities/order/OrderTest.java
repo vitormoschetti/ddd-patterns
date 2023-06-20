@@ -1,4 +1,4 @@
-package br.com.ddd.entities.order;
+package br.com.ddd.domain.entities.order;
 
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.entity.order.Order;

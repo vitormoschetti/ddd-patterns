@@ -1,4 +1,4 @@
-package br.com.ddd.repository;
+package br.com.ddd.infrastructure.repository;
 
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.repository.IProductRepository;

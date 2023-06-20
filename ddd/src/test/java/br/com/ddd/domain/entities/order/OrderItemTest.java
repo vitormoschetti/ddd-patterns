@@ -1,4 +1,4 @@
-package br.com.ddd.entities.order;
+package br.com.ddd.domain.entities.order;
 
 import br.com.ddd.domain.entity.order.OrderItem;
 import br.com.ddd.domain.exception.DomainException;
