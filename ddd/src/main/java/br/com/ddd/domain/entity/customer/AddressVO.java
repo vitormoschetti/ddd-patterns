@@ -1,10 +1,11 @@
 package br.com.ddd.domain.entity.customer;
 
+import br.com.ddd.core.domain.entity.IValueObject;
 import br.com.ddd.domain.exception.DomainException;
 
 import java.util.Objects;
 
-public class AddressVO {
+public class AddressVO implements IValueObject {
 
     private final String street;
     private final String city;

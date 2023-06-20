@@ -1,5 +1,6 @@
 package br.com.ddd.domain.service;
 
+import br.com.ddd.core.domain.IService;
 import br.com.ddd.domain.entity.customer.Customer;
 import br.com.ddd.domain.entity.order.Order;
 import br.com.ddd.domain.entity.order.OrderItem;
@@ -9,7 +10,7 @@ import java.math.RoundingMode;
 import java.util.List;
 import java.util.UUID;
 
-public class OrderService {
+public class OrderService implements IService {
 
     public static BigDecimal total(final List<OrderItem> items) {
 

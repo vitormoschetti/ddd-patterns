@@ -1,11 +1,12 @@
 package br.com.ddd.domain.entity.order;
 
+import br.com.ddd.core.domain.entity.IAggregate;
 import br.com.ddd.domain.exception.DomainException;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class OrderItem {
+public class OrderItem implements IAggregate {
 
     private final String id;
     private final String name;

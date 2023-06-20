@@ -1,11 +1,12 @@
 package br.com.ddd.domain.entity.product;
 
+import br.com.ddd.core.domain.entity.IAggregateRoot;
 import br.com.ddd.domain.exception.DomainException;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Product {
+public class Product implements IAggregateRoot {
 
     private final String id;
     private String name;
@@ -35,6 +36,14 @@ public class Product {
     public void changePrice(final BigDecimal price) {
         this.price = price;
         this.validate();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public BigDecimal getPrice() {

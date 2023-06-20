@@ -1,10 +1,11 @@
 package br.com.ddd.domain.entity.customer;
 
+import br.com.ddd.core.domain.entity.IAggregateRoot;
 import br.com.ddd.domain.exception.DomainException;
 
 import java.util.Objects;
 
-public class Customer {
+public class Customer implements IAggregateRoot {
 
     private final String id;
     private String name;
