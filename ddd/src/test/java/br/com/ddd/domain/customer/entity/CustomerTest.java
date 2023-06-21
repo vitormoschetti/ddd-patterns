@@ -1,4 +1,4 @@
-package br.com.ddd.domain.entities.customer;
+package br.com.ddd.domain.customer.entity;
 
 
 import br.com.ddd.BaseTeste;

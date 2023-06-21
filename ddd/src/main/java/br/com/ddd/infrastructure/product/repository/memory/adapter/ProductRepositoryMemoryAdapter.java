@@ -1,7 +1,7 @@
-package br.com.ddd.infrastructure.repository.memory.adapter;
+package br.com.ddd.infrastructure.product.repository.memory.adapter;
 
+import br.com.ddd.infrastructure.product.repository.memory.model.ProductModel;
 import br.com.ddd.infrastructure.shared.repository.IRepositoryAdapter;
-import br.com.ddd.infrastructure.db.memory.model.ProductModel;
 
 import java.util.List;
 

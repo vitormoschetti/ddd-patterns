@@ -1,4 +1,4 @@
-package br.com.ddd.infrastructure.db.memory.model;
+package br.com.ddd.infrastructure.product.repository.memory.model;
 
 import br.com.ddd.infrastructure.shared.model.IModel;
 

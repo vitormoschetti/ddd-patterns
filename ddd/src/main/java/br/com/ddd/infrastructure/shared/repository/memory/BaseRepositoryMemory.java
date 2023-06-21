@@ -1,4 +1,4 @@
-package br.com.ddd.infrastructure.repository.memory.adapter.impl;
+package br.com.ddd.infrastructure.shared.repository.memory;
 
 import br.com.ddd.infrastructure.shared.repository.memory.IMemoryMock;
 

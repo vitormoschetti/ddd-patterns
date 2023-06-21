@@ -1,4 +1,4 @@
-package br.com.ddd.infrastructure.repository;
+package br.com.ddd.infrastructure.checkout.repository;
 
 import br.com.ddd.domain.checkout.entity.Order;
 import br.com.ddd.domain.checkout.repository.IOrderRepository;

@@ -1,4 +1,4 @@
-package br.com.ddd.infrastructure.repository;
+package br.com.ddd.infrastructure.customer.repository;
 
 import br.com.ddd.domain.customer.entity.Customer;
 import br.com.ddd.domain.customer.repository.ICustomerRepository;

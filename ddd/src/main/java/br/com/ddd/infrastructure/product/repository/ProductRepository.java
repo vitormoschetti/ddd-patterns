@@ -1,9 +1,9 @@
-package br.com.ddd.infrastructure.repository;
+package br.com.ddd.infrastructure.product.repository;
 
 import br.com.ddd.domain.product.entity.Product;
 import br.com.ddd.domain.product.repository.IProductRepository;
-import br.com.ddd.infrastructure.db.memory.model.ProductModel;
-import br.com.ddd.infrastructure.repository.memory.adapter.ProductRepositoryMemoryAdapter;
+import br.com.ddd.infrastructure.product.repository.memory.model.ProductModel;
+import br.com.ddd.infrastructure.product.repository.memory.adapter.ProductRepositoryMemoryAdapter;
 
 import java.util.List;
 

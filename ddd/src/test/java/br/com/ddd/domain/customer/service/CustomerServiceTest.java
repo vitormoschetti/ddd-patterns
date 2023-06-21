@@ -1,4 +1,4 @@
-package br.com.ddd.domain.services;
+package br.com.ddd.domain.customer.service;
 
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.customer.event.event.CustomerChangedAddressEvent;
@@ -8,7 +8,7 @@ import br.com.ddd.domain.customer.event.handler.PrintLogWhenCustomerCreatedEvent
 import br.com.ddd.domain.customer.event.handler.SendMessageWhenCustomerChangedAddressEventHandler;
 import br.com.ddd.domain.customer.event.dispatcher.CustomerEventDispatcher;
 import br.com.ddd.domain.customer.service.CustomerService;
-import br.com.ddd.infrastructure.repository.CustomerRepository;
+import br.com.ddd.infrastructure.customer.repository.CustomerRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

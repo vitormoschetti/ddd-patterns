@@ -1,8 +1,8 @@
-package br.com.ddd.infrastructure.repository.memory.adapter.impl;
+package br.com.ddd.infrastructure.product.repository.memory.adapter;
 
-import br.com.ddd.infrastructure.db.memory.model.ProductModel;
-import br.com.ddd.infrastructure.repository.memory.adapter.ProductRepositoryMemoryAdapter;
-import br.com.ddd.infrastructure.repository.memory.mock.ProductsMock;
+import br.com.ddd.infrastructure.product.repository.memory.ProductsMock;
+import br.com.ddd.infrastructure.product.repository.memory.model.ProductModel;
+import br.com.ddd.infrastructure.shared.repository.memory.BaseRepositoryMemory;
 
 import java.util.List;
 

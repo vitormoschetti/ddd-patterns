@@ -1,9 +1,8 @@
-package br.com.ddd.domain.event.product;
+package br.com.ddd.domain.product.event.dispatcher;
 
 import br.com.ddd.domain.product.entity.Product;
 import br.com.ddd.domain.product.event.event.ProductCreatedEvent;
 import br.com.ddd.domain.product.event.handler.SendEmailWhenProductCreatedEventHandler;
-import br.com.ddd.domain.product.event.dispatcher.ProductEventDispatcher;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

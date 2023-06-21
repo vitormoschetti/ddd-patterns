@@ -1,14 +1,14 @@
-package br.com.ddd.infrastructure.repository.memory.mock;
+package br.com.ddd.infrastructure.product.repository.memory;
 
 import br.com.ddd.infrastructure.shared.repository.memory.IMemoryMock;
-import br.com.ddd.infrastructure.db.memory.model.ProductModel;
+import br.com.ddd.infrastructure.product.repository.memory.model.ProductModel;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 public class ProductsMock implements IMemoryMock {
 
-    private List<ProductModel> models;
+    private final List<ProductModel> models;
 
     public ProductsMock() {
         this.models = new ArrayList<>(this.buildInitProducts());

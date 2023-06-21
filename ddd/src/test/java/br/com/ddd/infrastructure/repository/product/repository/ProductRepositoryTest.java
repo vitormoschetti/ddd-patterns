@@ -1,9 +1,10 @@
-package br.com.ddd.infrastructure.repository;
+package br.com.ddd.infrastructure.repository.product.repository;
 
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.product.repository.IProductRepository;
-import br.com.ddd.infrastructure.repository.memory.adapter.impl.ProductRepositoryMemoryAdapterImpl;
-import br.com.ddd.infrastructure.repository.memory.mock.ProductsMock;
+import br.com.ddd.infrastructure.product.repository.ProductRepository;
+import br.com.ddd.infrastructure.product.repository.memory.adapter.ProductRepositoryMemoryAdapterImpl;
+import br.com.ddd.infrastructure.product.repository.memory.ProductsMock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

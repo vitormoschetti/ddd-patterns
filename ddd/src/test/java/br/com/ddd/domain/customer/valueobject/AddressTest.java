@@ -1,4 +1,4 @@
-package br.com.ddd.domain.entities.customer;
+package br.com.ddd.domain.customer.valueobject;
 
 import br.com.ddd.domain.shared.entity.exception.DomainException;
 import br.com.ddd.domain.customer.valueobject.AddressVO;
