@@ -1,6 +1,6 @@
 package br.com.ddd.infrastructure.repository.memory.adapter.impl;
 
-import br.com.ddd.core.infra.repository.memory.IMemoryMock;
+import br.com.ddd.infrastructure.shared.repository.memory.IMemoryMock;
 
 public class BaseRepositoryMemory<T extends IMemoryMock> {
 

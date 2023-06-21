@@ -1,9 +1,9 @@
 package br.com.ddd;
 
-import br.com.ddd.domain.entity.customer.AddressVO;
-import br.com.ddd.domain.entity.customer.Customer;
-import br.com.ddd.domain.entity.order.Order;
-import br.com.ddd.domain.entity.order.OrderItem;
+import br.com.ddd.domain.customer.valueobject.AddressVO;
+import br.com.ddd.domain.customer.entity.Customer;
+import br.com.ddd.domain.checkout.entity.Order;
+import br.com.ddd.domain.checkout.entity.OrderItem;
 
 import java.math.BigDecimal;
 import java.util.List;

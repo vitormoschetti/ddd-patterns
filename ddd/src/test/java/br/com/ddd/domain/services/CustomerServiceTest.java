@@ -1,13 +1,13 @@
 package br.com.ddd.domain.services;
 
 import br.com.ddd.BaseTeste;
-import br.com.ddd.domain.events.customer.CustomerChangedAddressEvent;
-import br.com.ddd.domain.events.customer.CustomerCreatedEvent;
-import br.com.ddd.domain.events.customer.handler.PrintLog2WhenCustomerCreatedEventHandler;
-import br.com.ddd.domain.events.customer.handler.PrintLogWhenCustomerCreatedEventHandler;
-import br.com.ddd.domain.events.customer.handler.SendMessageWhenCustomerChangedAddressEventHandler;
-import br.com.ddd.domain.events.shared.CustomerEventDispatcher;
-import br.com.ddd.domain.service.CustomerService;
+import br.com.ddd.domain.customer.event.event.CustomerChangedAddressEvent;
+import br.com.ddd.domain.customer.event.event.CustomerCreatedEvent;
+import br.com.ddd.domain.customer.event.handler.PrintLog2WhenCustomerCreatedEventHandler;
+import br.com.ddd.domain.customer.event.handler.PrintLogWhenCustomerCreatedEventHandler;
+import br.com.ddd.domain.customer.event.handler.SendMessageWhenCustomerChangedAddressEventHandler;
+import br.com.ddd.domain.customer.event.dispatcher.CustomerEventDispatcher;
+import br.com.ddd.domain.customer.service.CustomerService;
 import br.com.ddd.infrastructure.repository.CustomerRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

@@ -1,6 +1,6 @@
 package br.com.ddd.infrastructure.db.memory.model;
 
-import br.com.ddd.core.infra.model.IModel;
+import br.com.ddd.infrastructure.shared.model.IModel;
 
 import java.math.BigDecimal;
 import java.util.Objects;

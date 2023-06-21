@@ -1,7 +1,7 @@
 package br.com.ddd.infrastructure.repository;
 
-import br.com.ddd.domain.entity.order.Order;
-import br.com.ddd.domain.repository.IOrderRepository;
+import br.com.ddd.domain.checkout.entity.Order;
+import br.com.ddd.domain.checkout.repository.IOrderRepository;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package br.com.ddd.domain.entities.customer;
 
-import br.com.ddd.domain.exception.DomainException;
-import br.com.ddd.domain.entity.customer.AddressVO;
+import br.com.ddd.domain.shared.entity.exception.DomainException;
+import br.com.ddd.domain.customer.valueobject.AddressVO;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

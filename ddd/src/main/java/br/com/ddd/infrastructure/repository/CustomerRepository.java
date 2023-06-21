@@ -1,7 +1,7 @@
 package br.com.ddd.infrastructure.repository;
 
-import br.com.ddd.domain.entity.customer.Customer;
-import br.com.ddd.domain.repository.ICustomerRepository;
+import br.com.ddd.domain.customer.entity.Customer;
+import br.com.ddd.domain.customer.repository.ICustomerRepository;
 
 import java.util.List;
 

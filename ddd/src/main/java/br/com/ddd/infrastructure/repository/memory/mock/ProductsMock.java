@@ -1,6 +1,6 @@
 package br.com.ddd.infrastructure.repository.memory.mock;
 
-import br.com.ddd.core.infra.repository.memory.IMemoryMock;
+import br.com.ddd.infrastructure.shared.repository.memory.IMemoryMock;
 import br.com.ddd.infrastructure.db.memory.model.ProductModel;
 
 import java.math.BigDecimal;
