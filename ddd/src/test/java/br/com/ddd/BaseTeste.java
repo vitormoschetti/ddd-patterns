@@ -17,6 +17,10 @@ public class BaseTeste {
         return new AddressVO("street", "city", "state", "zipcode");
     }
 
+    protected AddressVO buildAddressVOWith(final String street, final String city, final String state, final String zipCode) {
+        return new AddressVO(street, city, state, zipCode);
+    }
+
     protected Customer buildCustomerWith(AddressVO addressVO) {
         return new Customer(UUID.randomUUID().toString(), "vitor", addressVO);
     }

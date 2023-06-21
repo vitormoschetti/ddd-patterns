@@ -1,9 +1,9 @@
-package br.com.ddd.domain.event;
+package br.com.ddd.domain.events.product;
 
 import br.com.ddd.domain.entity.product.Product;
 import br.com.ddd.domain.events.product.ProductCreatedEvent;
 import br.com.ddd.domain.events.product.handler.SendEmailWhenProductCreatedEventHandler;
-import br.com.ddd.domain.events.shared.EventDispatcher;
+import br.com.ddd.domain.events.shared.ProductEventDispatcher;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ import java.util.UUID;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class EventDispatcherTest {
+public class ProductEventDispatcherTest {
 
     @Test
     @DisplayName("should register an event handler")
@@ -23,7 +23,7 @@ public class EventDispatcherTest {
 
         final var eventName = "ProductCreatedEvent";
 
-        final var dispatcher = new EventDispatcher();
+        final var dispatcher = new ProductEventDispatcher();
 
         final var handler = new SendEmailWhenProductCreatedEventHandler();
 
@@ -42,7 +42,7 @@ public class EventDispatcherTest {
 
         final var eventName = "ProductCreatedEvent";
 
-        final var dispatcher = new EventDispatcher();
+        final var dispatcher = new ProductEventDispatcher();
 
         final var handler = new SendEmailWhenProductCreatedEventHandler();
 
@@ -68,7 +68,7 @@ public class EventDispatcherTest {
         final var eventName = "ProductCreatedEvent";
         final var eventName2 = "ProductCreatedEvent2";
 
-        final var dispatcher = new EventDispatcher();
+        final var dispatcher = new ProductEventDispatcher();
 
         final var handler = new SendEmailWhenProductCreatedEventHandler();
 
@@ -99,7 +99,7 @@ public class EventDispatcherTest {
 
         final var eventName = "ProductCreatedEvent";
 
-        final var dispatcher = new EventDispatcher();
+        final var dispatcher = new ProductEventDispatcher();
 
         final var handler = Mockito.spy(new SendEmailWhenProductCreatedEventHandler());
 

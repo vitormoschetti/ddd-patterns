@@ -8,6 +8,7 @@ public class SendEmailWhenProductCreatedEventHandler implements IEventHandler<Pr
 
     @Override
     public void handle(final IEvent<Product> event) {
-        System.out.println("Sending email to " + event.eventData() + " at " + event.dateTimeOccured());
+        System.out.println("TraceId: " + event.traceId() + "\nSending email to " + event.payload() + " at " + event.instantCreated());
+        System.out.println();
     }
 }

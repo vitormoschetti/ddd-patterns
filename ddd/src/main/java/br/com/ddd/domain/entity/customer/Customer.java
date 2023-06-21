@@ -9,7 +9,7 @@ public class Customer implements IAggregateRoot {
 
     private final String id;
     private String name;
-    private final AddressVO address;
+    private AddressVO address;
     private Boolean active;
     private Long rewardPoints;
 
@@ -62,5 +62,41 @@ public class Customer implements IAggregateRoot {
 
     public Long getRewardPoints() {
         return rewardPoints;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public AddressVO getAddress() {
+        return this.address;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                ", active=" + active +
+                ", rewardPoints=" + rewardPoints +
+                '}';
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof final Customer customer)) return false;
+        return getId().equals(customer.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    public void changeAddress(final AddressVO address) {
+        this.address = address;
+        this.validate();
     }
 }

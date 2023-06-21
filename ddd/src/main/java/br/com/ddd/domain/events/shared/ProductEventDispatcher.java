@@ -7,11 +7,11 @@ import br.com.ddd.domain.entity.product.Product;
 
 import java.util.*;
 
-public class EventDispatcher implements IEventDispatcher<Product> {
+public class ProductEventDispatcher implements IEventDispatcher<Product> {
 
     private final Map<String, List<IEventHandler<Product>>> eventHandlers;
 
-    public EventDispatcher() {
+    public ProductEventDispatcher() {
         this.eventHandlers = new HashMap<>();
     }
 

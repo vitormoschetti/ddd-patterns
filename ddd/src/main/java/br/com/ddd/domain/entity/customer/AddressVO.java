@@ -34,6 +34,23 @@ public class AddressVO implements IValueObject {
 
     @Override
     public String toString() {
-        return String.join(this.street, this.city, this.state, this.zipCode);
+        return "AddressVO{" +
+                "street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof final AddressVO addressVO)) return false;
+        return street.equals(addressVO.street) && city.equals(addressVO.city) && state.equals(addressVO.state) && zipCode.equals(addressVO.zipCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, city, state, zipCode);
     }
 }
