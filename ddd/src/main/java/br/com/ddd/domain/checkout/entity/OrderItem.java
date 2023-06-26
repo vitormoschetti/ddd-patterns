@@ -40,4 +40,23 @@ public class OrderItem implements IAggregate {
         return this.price.multiply(new BigDecimal(this.quantity));
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
 }

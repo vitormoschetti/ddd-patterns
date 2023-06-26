@@ -34,4 +34,16 @@ public class Order implements IAggregateRoot {
         return this.items.stream().map(OrderItem::getTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
 
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
 }

@@ -5,13 +5,7 @@ import br.com.ddd.domain.shared.entity.exception.DomainException;
 
 import java.util.Objects;
 
-public class AddressVO implements IValueObject {
-
-    private final String street;
-    private final String city;
-    private final String state;
-    private final String zipCode;
-
+public record AddressVO(String street, String city, String state, String zipCode) implements IValueObject {
 
     public AddressVO(final String street, final String city, final String state, final String zipCode) {
         this.street = street;
@@ -49,8 +43,4 @@ public class AddressVO implements IValueObject {
         return street.equals(addressVO.street) && city.equals(addressVO.city) && state.equals(addressVO.state) && zipCode.equals(addressVO.zipCode);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(street, city, state, zipCode);
-    }
 }

@@ -1,14 +1,11 @@
 package br.com.ddd.infrastructure.product.repository.memory.model;
 
-import br.com.ddd.infrastructure.shared.model.IModel;
+import br.com.ddd.infrastructure.product.repository.shared.IProductModel;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public record ProductModel(String id, String name, BigDecimal price) implements IModel {
-
-    //Qualquer implementação de ORM, etc...
-
+public record ProductModel(String id, String name, BigDecimal price) implements IProductModel {
 
     @Override
     public boolean equals(final Object o) {

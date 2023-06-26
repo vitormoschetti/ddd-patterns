@@ -1,30 +1,59 @@
 package br.com.ddd.domain.customer.service;
 
 import br.com.ddd.BaseTeste;
+import br.com.ddd.domain.customer.entity.Customer;
+import br.com.ddd.domain.customer.event.dispatcher.CustomerEventDispatcher;
 import br.com.ddd.domain.customer.event.event.CustomerChangedAddressEvent;
 import br.com.ddd.domain.customer.event.event.CustomerCreatedEvent;
 import br.com.ddd.domain.customer.event.handler.PrintLog2WhenCustomerCreatedEventHandler;
 import br.com.ddd.domain.customer.event.handler.PrintLogWhenCustomerCreatedEventHandler;
 import br.com.ddd.domain.customer.event.handler.SendMessageWhenCustomerChangedAddressEventHandler;
-import br.com.ddd.domain.customer.event.dispatcher.CustomerEventDispatcher;
-import br.com.ddd.domain.customer.service.CustomerService;
-import br.com.ddd.infrastructure.customer.repository.CustomerRepository;
-import org.junit.Test;
+import br.com.ddd.domain.customer.repository.ICustomerRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 
 public class CustomerServiceTest extends BaseTeste {
 
+    CustomerEventDispatcher dispatcher;
+    ICustomerRepository repository;
+
+    @BeforeEach
+    public void init() {
+        this.dispatcher = new CustomerEventDispatcher();
+        this.repository = new ICustomerRepository() {
+            @Override
+            public void create(final Customer entity) {
+
+            }
+
+            @Override
+            public void update(final Customer entity) {
+
+            }
+
+            @Override
+            public Customer findById(final String id) {
+                return buildValidCustomer();
+            }
+
+            @Override
+            public List<Customer> findAll() {
+                return List.of(buildValidCustomer());
+            }
+        };
+    }
+
     @Test
     @DisplayName("should notify handlers after created customer")
     public void shouldNotifyHandlersAfterCreatedCustomer() {
 
-        final var dispatcher = new CustomerEventDispatcher();
-        final var repository = new CustomerRepository();
 
         final var printHandler = spy(new PrintLogWhenCustomerCreatedEventHandler());
 
@@ -54,7 +83,6 @@ public class CustomerServiceTest extends BaseTeste {
     public void shouldNotifyHandlersAfterChangedAddress() {
 
         final var dispatcher = new CustomerEventDispatcher();
-        final var repository = new CustomerRepository();
 
         final var handler = spy(new SendMessageWhenCustomerChangedAddressEventHandler());
 

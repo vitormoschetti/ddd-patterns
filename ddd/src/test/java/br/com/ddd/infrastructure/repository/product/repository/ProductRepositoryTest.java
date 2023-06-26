@@ -2,9 +2,10 @@ package br.com.ddd.infrastructure.repository.product.repository;
 
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.product.repository.IProductRepository;
-import br.com.ddd.infrastructure.product.repository.ProductRepository;
-import br.com.ddd.infrastructure.product.repository.memory.adapter.ProductRepositoryMemoryAdapterImpl;
-import br.com.ddd.infrastructure.product.repository.memory.ProductsMock;
+import br.com.ddd.infrastructure.product.repository.memory.adapter.ProductMemoryRepositoryAdapterImpl;
+import br.com.ddd.infrastructure.product.repository.memory.adapter.adaptersMock.ProductsMock;
+import br.com.ddd.infrastructure.product.repository.memory.factory.ProductMemoryFactory;
+import br.com.ddd.infrastructure.product.repository.shared.ProductRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,8 +19,9 @@ public class ProductRepositoryTest extends BaseTeste {
 
     @BeforeEach
     public void init() {
-        final var memoryAdapter = new ProductRepositoryMemoryAdapterImpl(new ProductsMock());
-        this.repository = new ProductRepository(memoryAdapter);
+        final var memoryAdapter = new ProductMemoryRepositoryAdapterImpl(new ProductsMock());
+        final var factory = new ProductMemoryFactory();
+        this.repository = new ProductRepository(memoryAdapter, factory);
     }
 
     @Test

@@ -23,6 +23,14 @@ public class Customer implements IAggregateRoot {
         this.activate();
     }
 
+    public Customer(final String id, final String name, final AddressVO address, final Boolean active, final Long rewardPoints) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.active = active;
+        this.rewardPoints = rewardPoints;
+    }
+
     private void validate() {
         if (Objects.isNull(this.id) || this.id.isEmpty())
             throw new DomainException("Id is required");
