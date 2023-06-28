@@ -3,7 +3,6 @@ package br.com.ddd.infrastructure.repository.product.repository;
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.product.repository.IProductRepository;
 import br.com.ddd.infrastructure.product.repository.memory.adapter.ProductMemoryRepositoryAdapterImpl;
-import br.com.ddd.infrastructure.product.repository.memory.adapter.adaptersMock.ProductsMock;
 import br.com.ddd.infrastructure.product.repository.memory.factory.ProductMemoryFactory;
 import br.com.ddd.infrastructure.product.repository.shared.ProductRepository;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +18,7 @@ public class ProductRepositoryTest extends BaseTeste {
 
     @BeforeEach
     public void init() {
-        final var memoryAdapter = new ProductMemoryRepositoryAdapterImpl(new ProductsMock());
+        final var memoryAdapter = new ProductMemoryRepositoryAdapterImpl();
         final var factory = new ProductMemoryFactory();
         this.repository = new ProductRepository(memoryAdapter, factory);
     }

@@ -1,36 +1,54 @@
 package br.com.ddd.infrastructure.product.repository.memory.adapter;
 
-import br.com.ddd.infrastructure.product.repository.memory.adapter.adaptersMock.ProductsMock;
+import br.com.ddd.infrastructure.product.repository.memory.model.ProductModel;
 import br.com.ddd.infrastructure.product.repository.shared.IProductModel;
 import br.com.ddd.infrastructure.shared.repository.IRepositoryAdapter;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.*;
 
 public class ProductMemoryRepositoryAdapterImpl implements IRepositoryAdapter<IProductModel> {
 
-    private final ProductsMock mock;
+    private final List<IProductModel> models;
 
-    public ProductMemoryRepositoryAdapterImpl(final ProductsMock mock) {
-        this.mock = mock;
+    public ProductMemoryRepositoryAdapterImpl() {
+        this.models = new ArrayList<>(this.buildInitProducts());
     }
 
-    @Override
-    public void create(final IProductModel model) {
-        this.mock.create(model);
-    }
-
-    @Override
-    public void update(final IProductModel model) {
-        this.mock.update(model);
-    }
-
-    @Override
-    public IProductModel findById(final String id) {
-        return this.mock.findById(id);
-    }
-
-    @Override
     public List<IProductModel> findAll() {
-        return this.mock.findAll();
+        return this.models;
+    }
+
+    public IProductModel findById(final String id) {
+        return this.models.stream().filter(m -> m.id().equalsIgnoreCase(id)).findFirst().orElse(null);
+    }
+
+    public void create(IProductModel model) {
+        this.models.add(model);
+    }
+
+    public void update(final IProductModel model) {
+        final var result = this.findById(model.id());
+        if (Objects.isNull(result))
+            throw new RuntimeException("Product not found");
+        this.models.remove(model);
+        this.create(model);
+
+    }
+
+    private List<IProductModel> buildInitProducts() {
+        return List.of(
+                new ProductModel("product-test", "product-test", BigDecimal.ONE),
+                this.buildProductModel(),
+                this.buildProductModel(),
+                this.buildProductModel(),
+                this.buildProductModel(),
+                this.buildProductModel()
+        );
+    }
+
+    private IProductModel buildProductModel() {
+        final var id = UUID.randomUUID().toString();
+        return new ProductModel(id, "product-" + id, new BigDecimal(new Random().nextInt(100) + 1));
     }
 }

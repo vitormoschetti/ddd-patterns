@@ -3,18 +3,19 @@ package br.com.ddd.infrastructure.checkout.repository.shared;
 import br.com.ddd.domain.checkout.entity.Order;
 import br.com.ddd.domain.checkout.entity.OrderItem;
 import br.com.ddd.domain.checkout.repository.IOrderRepository;
+import br.com.ddd.infrastructure.checkout.repository.shared.IOrderModel;
 import br.com.ddd.infrastructure.shared.factory.IFactory;
 import br.com.ddd.infrastructure.shared.repository.IRepositoryAdapter;
 
 import java.util.List;
 
-public class OrderRepository implements IOrderRepository {
+public class OrderMongoRepository implements IOrderRepository {
 
     private final IRepositoryAdapter<IOrderModel> adapter;
     private final IFactory<Order, IOrderModel> factory;
 
-    public OrderRepository(final IRepositoryAdapter<IOrderModel> adapter,
-                           final IFactory<Order, IOrderModel> factory) {
+    public OrderMongoRepository(final IRepositoryAdapter<IOrderModel> adapter,
+                                final IFactory<Order, IOrderModel> factory) {
         this.adapter = adapter;
         this.factory = factory;
     }
