@@ -9,6 +9,7 @@ import br.com.ddd.domain.customer.event.handler.PrintLog2WhenCustomerCreatedEven
 import br.com.ddd.domain.customer.event.handler.PrintLogWhenCustomerCreatedEventHandler;
 import br.com.ddd.domain.customer.event.handler.SendMessageWhenCustomerChangedAddressEventHandler;
 import br.com.ddd.domain.customer.repository.ICustomerRepository;
+import br.com.ddd.domain.customer.valueobject.AddressVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -64,11 +65,11 @@ public class CustomerServiceTest extends BaseTeste {
 
         final var customerService = new CustomerService(dispatcher, repository);
 
-        final var customer = customerService.notifyCreated("1", "handlers-test", this.buildValidAddressVO());
+        final var customer = customerService.notifyCreated("handlers-test", "street", "city", "state", "zipcode");
 
-        Assertions.assertEquals("1", customer.getId());
+        Assertions.assertNotNull(customer.getId());
         Assertions.assertEquals("handlers-test", customer.getName());
-        Assertions.assertEquals(this.buildValidAddressVO(), customer.getAddress());
+        Assertions.assertEquals(new AddressVO("street", "city", "state", "zipcode"), customer.getAddress());
         Assertions.assertEquals(0L, customer.getRewardPoints());
         Assertions.assertEquals(Boolean.TRUE, customer.isActive());
 

@@ -14,10 +14,10 @@ public class Customer implements IAggregateRoot {
     private Boolean active;
     private Long rewardPoints;
 
-    public Customer(final String id, final String name, final AddressVO address) {
+    public Customer(final String id, final String name, final String street, final String city, final String state, final String zipCode) {
         this.id = id;
         this.name = name;
-        this.address = address;
+        this.address = new AddressVO(street, city, state, zipCode);
         this.rewardPoints = 0L;
         this.validate();
         this.activate();
@@ -36,8 +36,6 @@ public class Customer implements IAggregateRoot {
             throw new DomainException("Id is required");
         if (Objects.isNull(this.name) || this.name.isEmpty())
             throw new DomainException("Name is required");
-        if (Objects.isNull(this.address))
-            throw new DomainException("Address is required");
     }
 
     public void changeName(final String name) {

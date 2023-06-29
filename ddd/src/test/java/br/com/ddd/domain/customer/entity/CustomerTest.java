@@ -2,7 +2,6 @@ package br.com.ddd.domain.customer.entity;
 
 
 import br.com.ddd.BaseTeste;
-import br.com.ddd.domain.customer.entity.Customer;
 import br.com.ddd.domain.shared.entity.exception.DomainException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -16,7 +15,7 @@ public class CustomerTest extends BaseTeste {
     @DisplayName("should throw domain exception when id is empty")
     public void shouldThrowDomainExceptionWhenIdEmpty() {
 
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new Customer("", "Vitor", this.buildValidAddressVO()));
+        final var exception = Assertions.assertThrows(DomainException.class, () -> new Customer("", "Vitor", "street", "city", "state", "zipcode"));
 
         Assertions.assertEquals("Id is required", exception.getMessage());
 
@@ -26,19 +25,9 @@ public class CustomerTest extends BaseTeste {
     @DisplayName("should throw domain exception when Name is empty")
     public void shouldThrowDomainExceptionWhenNameEmpty() {
 
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new Customer(UUID.randomUUID().toString(), "", this.buildValidAddressVO()));
+        final var exception = Assertions.assertThrows(DomainException.class, () -> new Customer(UUID.randomUUID().toString(), "", "street", "city", "state", "zipcode"));
 
         Assertions.assertEquals("Name is required", exception.getMessage());
-
-    }
-
-    @Test
-    @DisplayName("should throw domain exception when Address is null")
-    public void shouldThrowDomainExceptionWhenAddressNull() {
-
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new Customer(UUID.randomUUID().toString(), "vitor", null));
-
-        Assertions.assertEquals("Address is required", exception.getMessage());
 
     }
 

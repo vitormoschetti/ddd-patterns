@@ -1,9 +1,11 @@
 package br.com.ddd;
 
-import br.com.ddd.domain.customer.valueobject.AddressVO;
-import br.com.ddd.domain.customer.entity.Customer;
+import br.com.ddd.application.customer.input.CreateCustomerAddressInput;
+import br.com.ddd.application.customer.input.CreateCustomerInput;
 import br.com.ddd.domain.checkout.entity.Order;
 import br.com.ddd.domain.checkout.entity.OrderItem;
+import br.com.ddd.domain.customer.entity.Customer;
+import br.com.ddd.domain.customer.valueobject.AddressVO;
 import br.com.ddd.domain.product.entity.Product;
 
 import java.math.BigDecimal;
@@ -13,20 +15,12 @@ import java.util.UUID;
 
 public class BaseTeste {
 
-    protected AddressVO buildValidAddressVO() {
-        return new AddressVO("street", "city", "state", "zipcode");
-    }
-
     protected AddressVO buildAddressVOWith(final String street, final String city, final String state, final String zipCode) {
         return new AddressVO(street, city, state, zipCode);
     }
 
-    protected Customer buildCustomerWith(AddressVO addressVO) {
-        return new Customer(UUID.randomUUID().toString(), "vitor", addressVO);
-    }
-
     protected Customer buildValidCustomer() {
-        return this.buildCustomerWith(this.buildValidAddressVO());
+        return new Customer(UUID.randomUUID().toString(), "name", "street", "city", "state", "zipcode");
     }
 
     protected List<OrderItem> buildListOrderItem(final Long quantity) {
@@ -61,6 +55,15 @@ public class BaseTeste {
 
     protected Product buildProductWith(final String name, final BigDecimal price) {
         return new Product(UUID.randomUUID().toString(), name, price);
+    }
+
+    protected CreateCustomerInput buildCreateCustomerInput() {
+        return new CreateCustomerInput(
+                "name",
+                new CreateCustomerAddressInput(
+                        "street", "state", "city", "zipcode"
+                )
+        );
     }
 
 
