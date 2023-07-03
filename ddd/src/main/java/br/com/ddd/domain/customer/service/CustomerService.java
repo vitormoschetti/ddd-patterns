@@ -3,6 +3,7 @@ package br.com.ddd.domain.customer.service;
 import br.com.ddd.domain.customer.entity.Customer;
 import br.com.ddd.domain.customer.event.dispatcher.CustomerEventDispatcher;
 import br.com.ddd.domain.customer.event.event.CustomerChangedAddressEvent;
+import br.com.ddd.domain.customer.event.event.CustomerChangedAllEvent;
 import br.com.ddd.domain.customer.event.event.CustomerCreatedEvent;
 import br.com.ddd.domain.customer.repository.ICustomerRepository;
 import br.com.ddd.domain.customer.valueobject.AddressVO;
@@ -58,11 +59,11 @@ public class CustomerService implements IService {
         if (Objects.isNull(customer))
             throw new DomainException(String.format("Customer with id: %s not found", id));
 
-        customer.changeAll(name, street, state,  city, zipCode);
+        customer.changeAll(name, street, state, city, zipCode);
 
         this.repository.update(customer);
 
-        //TODO evento de notify
+        this.dispatcher.notify(new CustomerChangedAllEvent(customer));
 
         return customer;
 

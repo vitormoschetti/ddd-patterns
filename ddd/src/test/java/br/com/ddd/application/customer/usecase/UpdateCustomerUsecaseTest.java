@@ -12,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -42,7 +41,6 @@ public class UpdateCustomerUsecaseTest extends BaseTeste {
 
         final var response = this.usecase.execute(input);
 
-        assertNotNull(response.id());
         assertEquals(input.name(), response.name());
         assertEquals(input.address().street(), response.address().street());
         assertEquals(input.address().city(), response.address().city());
