@@ -79,4 +79,18 @@ public class BaseTeste {
     }
 
 
+    protected List<Customer> buildValidListCustomer() {
+        return List.of(
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer(),
+                this.buildValidCustomer()
+        );
+    }
 }

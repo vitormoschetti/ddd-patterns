@@ -10,6 +10,7 @@ import br.com.ddd.domain.customer.valueobject.AddressVO;
 import br.com.ddd.domain.shared.entity.exception.DomainException;
 import br.com.ddd.domain.shared.service.IService;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -67,5 +68,9 @@ public class CustomerService implements IService {
 
         return customer;
 
+    }
+
+    public List<Customer> findAll() {
+        return this.repository.findAll();
     }
 }

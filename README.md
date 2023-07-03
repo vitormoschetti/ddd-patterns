@@ -7,3 +7,4 @@
 - #### implementação isValid input
 - #### tratar exception do dominio como notifications para evitar lançar exceptions
 - #### eventos na camada de serviço do domain
+- #### um template response padrão para output

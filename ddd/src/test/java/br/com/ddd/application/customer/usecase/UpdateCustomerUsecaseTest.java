@@ -31,7 +31,7 @@ public class UpdateCustomerUsecaseTest extends BaseTeste {
     }
 
     @Test
-    @DisplayName("should create a customer")
+    @DisplayName("should update a customer")
     void shouldFindACustomer() {
 
         final var input = this.buildUpdateCustomerInput();
