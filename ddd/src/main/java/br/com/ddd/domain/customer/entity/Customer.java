@@ -43,6 +43,11 @@ public class Customer implements IAggregateRoot {
         this.validate();
     }
 
+    public void changeAll(final String name, final String street, final String state, final String city, final String zipCode) {
+        this.changeName(name);
+        this.changeAddress(new AddressVO(street, city, state, zipCode));
+    }
+
     public void activate() {
         this.active = Boolean.TRUE;
     }
@@ -106,4 +111,6 @@ public class Customer implements IAggregateRoot {
         this.address = address;
         this.validate();
     }
+
+
 }

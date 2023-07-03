@@ -2,6 +2,8 @@ package br.com.ddd;
 
 import br.com.ddd.application.customer.input.CreateCustomerAddressInput;
 import br.com.ddd.application.customer.input.CreateCustomerInput;
+import br.com.ddd.application.customer.input.UpdateCustomerAddressInput;
+import br.com.ddd.application.customer.input.UpdateCustomerInput;
 import br.com.ddd.domain.checkout.entity.Order;
 import br.com.ddd.domain.checkout.entity.OrderItem;
 import br.com.ddd.domain.customer.entity.Customer;
@@ -61,6 +63,16 @@ public class BaseTeste {
         return new CreateCustomerInput(
                 "name",
                 new CreateCustomerAddressInput(
+                        "street", "state", "city", "zipcode"
+                )
+        );
+    }
+
+    protected UpdateCustomerInput buildUpdateCustomerInput() {
+        return new UpdateCustomerInput(
+                "1",
+                "name",
+                new UpdateCustomerAddressInput(
                         "street", "state", "city", "zipcode"
                 )
         );

@@ -6,3 +6,4 @@
 - #### testes unitários (foco no desenvolvimento de fato)
 - #### implementação isValid input
 - #### tratar exception do dominio como notifications para evitar lançar exceptions
+- #### eventos na camada de serviço do domain

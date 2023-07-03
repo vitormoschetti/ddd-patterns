@@ -6,8 +6,10 @@ import br.com.ddd.domain.customer.event.event.CustomerChangedAddressEvent;
 import br.com.ddd.domain.customer.event.event.CustomerCreatedEvent;
 import br.com.ddd.domain.customer.repository.ICustomerRepository;
 import br.com.ddd.domain.customer.valueobject.AddressVO;
+import br.com.ddd.domain.shared.entity.exception.DomainException;
 import br.com.ddd.domain.shared.service.IService;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class CustomerService implements IService {
@@ -46,5 +48,23 @@ public class CustomerService implements IService {
 
     public Customer findById(final String id) {
         return this.repository.findById(id);
+    }
+
+    public Customer notifyUpdate(final String id, final String name, final String street,
+                                 final String state, final String city, final String zipCode) {
+
+        final var customer = this.findById(id);
+
+        if (Objects.isNull(customer))
+            throw new DomainException(String.format("Customer with id: %s not found", id));
+
+        customer.changeAll(name, street, state,  city, zipCode);
+
+        this.repository.update(customer);
+
+        //TODO evento de notify
+
+        return customer;
+
     }
 }
