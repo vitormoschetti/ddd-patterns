@@ -1,13 +1,11 @@
 package br.com.ddd.domain.shared.notification;
 
-import java.util.List;
+import java.util.Set;
 
 public interface INotification {
 
     void addMessage(INotificationError error);
 
-    List<INotificationError> messages(final String context);
-
-    List<INotificationError> messages();
+    Set<INotificationError> messages();
 
 }

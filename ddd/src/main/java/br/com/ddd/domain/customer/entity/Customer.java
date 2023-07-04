@@ -1,12 +1,15 @@
 package br.com.ddd.domain.customer.entity;
 
 import br.com.ddd.domain.customer.valueobject.AddressVO;
+import br.com.ddd.domain.shared.entity.BaseEntity;
 import br.com.ddd.domain.shared.entity.IAggregateRoot;
 import br.com.ddd.domain.shared.entity.exception.DomainException;
+import br.com.ddd.domain.shared.notification.DomainNotification;
+import br.com.ddd.domain.shared.notification.DomainNotificationError;
 
 import java.util.Objects;
 
-public class Customer implements IAggregateRoot {
+public class Customer extends BaseEntity implements IAggregateRoot {
 
     private final String id;
     private String name;
@@ -15,27 +18,34 @@ public class Customer implements IAggregateRoot {
     private Long rewardPoints;
 
     public Customer(final String id, final String name, final String street, final String city, final String state, final String zipCode) {
+        super(new DomainNotification());
         this.id = id;
         this.name = name;
         this.address = new AddressVO(street, city, state, zipCode);
         this.rewardPoints = 0L;
         this.validate();
         this.activate();
+
+
     }
 
-    public Customer(final String id, final String name, final AddressVO address, final Boolean active, final Long rewardPoints) {
+    public Customer(final String id, final String name, final String street, final String city, final String state, final String zipCode,
+                    final Boolean isActive, final Long rewardPoints) {
+        super(new DomainNotification());
         this.id = id;
         this.name = name;
-        this.address = address;
-        this.active = active;
+        this.address = new AddressVO(street, city, state, zipCode);
+        this.active = isActive;
         this.rewardPoints = rewardPoints;
     }
 
     private void validate() {
         if (Objects.isNull(this.id) || this.id.isEmpty())
-            throw new DomainException("Id is required");
+            this.addMessage(new DomainNotificationError("Id is required", this.getClass().getSimpleName()));
         if (Objects.isNull(this.name) || this.name.isEmpty())
-            throw new DomainException("Name is required");
+            this.addMessage(new DomainNotificationError("Name is required", this.getClass().getSimpleName()));
+        if (this.address.hasErrors())
+            this.address.getMessages().forEach(this::addMessage);
     }
 
     public void changeName(final String name) {

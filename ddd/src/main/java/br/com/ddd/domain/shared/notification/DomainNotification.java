@@ -1,15 +1,16 @@
 package br.com.ddd.domain.shared.notification;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
+import java.util.Set;
 
 public class DomainNotification implements INotification {
 
-    private List<INotificationError> errors;
+    private Set<INotificationError> errors;
 
     public DomainNotification() {
-        this.errors = new ArrayList<>();
+        this.errors = new HashSet<>();
     }
 
     @Override
@@ -18,12 +19,7 @@ public class DomainNotification implements INotification {
     }
 
     @Override
-    public List<INotificationError> messages(final String context) {
-        return this.errors.stream().filter(errorContext -> Objects.equals(errorContext.context(), context)).toList();
-    }
-
-    @Override
-    public List<INotificationError> messages() {
+    public Set<INotificationError> messages() {
         return this.errors;
     }
 }

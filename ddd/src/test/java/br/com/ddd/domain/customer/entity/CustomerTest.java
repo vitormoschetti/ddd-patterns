@@ -3,11 +3,16 @@ package br.com.ddd.domain.customer.entity;
 
 import br.com.ddd.BaseTeste;
 import br.com.ddd.domain.shared.entity.exception.DomainException;
+import br.com.ddd.domain.shared.notification.DomainNotificationError;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 
-import java.util.UUID;
+import java.util.List;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CustomerTest extends BaseTeste {
 
@@ -15,19 +20,14 @@ public class CustomerTest extends BaseTeste {
     @DisplayName("should throw domain exception when id is empty")
     public void shouldThrowDomainExceptionWhenIdEmpty() {
 
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new Customer("", "Vitor", "street", "city", "state", "zipcode"));
+        final var customer = new Customer("", "", "street", "city", "state", "zipcode");
 
-        Assertions.assertEquals("Id is required", exception.getMessage());
-
-    }
-
-    @Test
-    @DisplayName("should throw domain exception when Name is empty")
-    public void shouldThrowDomainExceptionWhenNameEmpty() {
-
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new Customer(UUID.randomUUID().toString(), "", "street", "city", "state", "zipcode"));
-
-        Assertions.assertEquals("Name is required", exception.getMessage());
+        assertTrue(customer.hasErrors());
+        assertEquals(2, customer.getMessages().size());
+        assertEquals(Set.of(
+                new DomainNotificationError("Id is required", Customer.class.getSimpleName()),
+                new DomainNotificationError("Name is required", Customer.class.getSimpleName())
+        ), customer.getMessages());
 
     }
 
@@ -37,9 +37,13 @@ public class CustomerTest extends BaseTeste {
 
         final var customer = this.buildValidCustomer();
 
-        final var exception = Assertions.assertThrows(DomainException.class, () -> customer.changeName(null));
+        customer.changeName(null);
 
-        Assertions.assertEquals("Name is required", exception.getMessage());
+        assertTrue(customer.hasErrors());
+        assertEquals(1, customer.getMessages().size());
+        assertEquals(Set.of(
+                new DomainNotificationError("Name is required", Customer.class.getSimpleName())
+        ), customer.getMessages());
 
     }
 
@@ -51,7 +55,7 @@ public class CustomerTest extends BaseTeste {
 
         customer.deactivate();
 
-        Assertions.assertEquals(Boolean.FALSE, customer.isActive());
+        assertEquals(Boolean.FALSE, customer.isActive());
 
     }
 
@@ -64,7 +68,7 @@ public class CustomerTest extends BaseTeste {
         customer.deactivate();
         customer.activate();
 
-        Assertions.assertEquals(Boolean.TRUE, customer.isActive());
+        assertEquals(Boolean.TRUE, customer.isActive());
 
     }
 
@@ -74,15 +78,15 @@ public class CustomerTest extends BaseTeste {
 
         final var customer = this.buildValidCustomer();
 
-        Assertions.assertEquals(0L, customer.getRewardPoints());
+        assertEquals(0L, customer.getRewardPoints());
 
         customer.addRewardPoints(10L);
 
-        Assertions.assertEquals(10L, customer.getRewardPoints());
+        assertEquals(10L, customer.getRewardPoints());
 
         customer.addRewardPoints(10L);
 
-        Assertions.assertEquals(20L, customer.getRewardPoints());
+        assertEquals(20L, customer.getRewardPoints());
 
     }
 
@@ -94,9 +98,8 @@ public class CustomerTest extends BaseTeste {
 
         final var exception = Assertions.assertThrows(DomainException.class, () -> customer.addRewardPoints(-10L));
 
-        Assertions.assertEquals("Reward Points must be greater equal zero", exception.getMessage());
+        assertEquals("Reward Points must be greater equal zero", exception.getMessage());
 
     }
-
 
 }

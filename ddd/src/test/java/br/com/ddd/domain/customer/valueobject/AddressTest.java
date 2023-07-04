@@ -1,10 +1,14 @@
 package br.com.ddd.domain.customer.valueobject;
 
-import br.com.ddd.domain.shared.entity.exception.DomainException;
-import br.com.ddd.domain.customer.valueobject.AddressVO;
+import br.com.ddd.domain.customer.entity.Customer;
+import br.com.ddd.domain.shared.notification.DomainNotificationError;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AddressTest {
 
@@ -12,40 +16,19 @@ public class AddressTest {
     @DisplayName("should throw domain exception when street is empty")
     public void shouldThrowDomainExceptionWhenStreetEmpty() {
 
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new AddressVO("", "city", "state", "zipCode"));
+        final var addressVO = new AddressVO("", "", "", "");
 
-        Assertions.assertEquals("Street is required", exception.getMessage());
+        assertTrue(addressVO.hasErrors());
+        assertEquals(4, addressVO.getMessages().size());
+        assertEquals(Set.of(
+                new DomainNotificationError("Street is required", AddressVO.class.getSimpleName()),
+                new DomainNotificationError("City is required", AddressVO.class.getSimpleName()),
+                new DomainNotificationError("State is required", AddressVO.class.getSimpleName()),
+                new DomainNotificationError("ZipCode is required", AddressVO.class.getSimpleName())
+        ), addressVO.getMessages());
 
-    }
-
-    @Test
-    @DisplayName("should throw domain exception when city is empty")
-    public void shouldThrowDomainExceptionWhenCityEmpty() {
-
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new AddressVO("street", "", "state", "zipCode"));
-
-        Assertions.assertEquals("City is required", exception.getMessage());
 
     }
 
-    @Test
-    @DisplayName("should throw domain exception when state is empty")
-    public void shouldThrowDomainExceptionWhenStateEmpty() {
-
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new AddressVO("street", "city", "", "zipCode"));
-
-        Assertions.assertEquals("State is required", exception.getMessage());
-
-    }
-
-    @Test
-    @DisplayName("should throw domain exception when zipCode is empty")
-    public void shouldThrowDomainExceptionWhenZipCodeEmpty() {
-
-        final var exception = Assertions.assertThrows(DomainException.class, () -> new AddressVO("street", "city", "state", ""));
-
-        Assertions.assertEquals("ZipCode is required", exception.getMessage());
-
-    }
 
 }

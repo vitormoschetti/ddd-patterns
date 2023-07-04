@@ -1,18 +1,18 @@
 package br.com.ddd.domain.shared.notification;
 
-public record DomainNotificationError(String message, String context, String action,
-                                      String location) implements INotificationError {
+import java.util.Objects;
+
+public record DomainNotificationError(String message, String context) implements INotificationError {
 
     @Override
-    public String toString() {
-        return String.format("""
-                        Message: %s
-                        Context: %s
-                        Action: %s
-                        Location: %s
-                        """,
-                this.message, this.context, this.action, this.location);
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof final DomainNotificationError that)) return false;
+        return Objects.equals(message, that.message) && Objects.equals(context, that.context);
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(message, context);
+    }
 }

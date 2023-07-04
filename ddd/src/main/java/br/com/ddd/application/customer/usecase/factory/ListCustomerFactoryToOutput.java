@@ -16,7 +16,7 @@ public class ListCustomerFactoryToOutput implements IFactoryToOutput<List<Custom
 
     public ListCustomerOutput convert(final Customer input) {
 
-        return new ListCustomerOutput(input.getId(), input.getName(), new ListCustomerAddressOutput(input.getAddress().street(),
-                input.getAddress().city(), input.getAddress().state(), input.getAddress().zipCode()));
+        return new ListCustomerOutput(input.getId(), input.getName(), new ListCustomerAddressOutput(input.getAddress().getStreet(),
+                input.getAddress().getCity(), input.getAddress().getState(), input.getAddress().getZipCode()));
     }
 }

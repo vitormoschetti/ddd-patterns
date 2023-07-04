@@ -45,10 +45,10 @@ public class FindCustomerUsecaseTest extends BaseTeste {
         assertNotNull(response);
         assertEquals(expect.getId(), response.id());
         assertEquals(expect.getName(), response.name());
-        assertEquals(expect.getAddress().street(), response.address().street());
-        assertEquals(expect.getAddress().city(), response.address().city());
-        assertEquals(expect.getAddress().state(), response.address().state());
-        assertEquals(expect.getAddress().zipCode(), response.address().zipCode());
+        assertEquals(expect.getAddress().getStreet(), response.address().street());
+        assertEquals(expect.getAddress().getCity(), response.address().city());
+        assertEquals(expect.getAddress().getState(), response.address().state());
+        assertEquals(expect.getAddress().getZipCode(), response.address().zipCode());
 
     }
 

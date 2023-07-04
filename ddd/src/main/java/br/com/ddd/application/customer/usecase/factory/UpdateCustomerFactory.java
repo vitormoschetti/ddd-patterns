@@ -9,7 +9,7 @@ public class UpdateCustomerFactory implements IFactoryToOutput<Customer, UpdateC
 
     @Override
     public UpdateCustomerOutput convert(final Customer input) {
-        return new UpdateCustomerOutput(input.getName(), new UpdateCustomerAddressOutput(input.getAddress().street(), input.getAddress().city(),
-                input.getAddress().state(), input.getAddress().zipCode()));
+        return new UpdateCustomerOutput(input.getName(), new UpdateCustomerAddressOutput(input.getAddress().getStreet(), input.getAddress().getCity(),
+                input.getAddress().getState(), input.getAddress().getZipCode()));
     }
 }

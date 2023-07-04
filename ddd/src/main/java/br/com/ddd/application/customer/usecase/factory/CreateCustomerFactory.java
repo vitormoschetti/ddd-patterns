@@ -9,7 +9,7 @@ public class CreateCustomerFactory implements IFactoryToOutput<Customer, CreateC
 
     @Override
     public CreateCustomerOutput convert(final Customer input) {
-        return new CreateCustomerOutput(input.getId(), input.getName(), new CreateCustomerAddressOutput(input.getAddress().street(), input.getAddress().city(),
-                input.getAddress().state(), input.getAddress().zipCode()));
+        return new CreateCustomerOutput(input.getId(), input.getName(), new CreateCustomerAddressOutput(input.getAddress().getStreet(), input.getAddress().getCity(),
+                input.getAddress().getState(), input.getAddress().getZipCode()));
     }
 }

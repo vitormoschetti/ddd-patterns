@@ -10,7 +10,7 @@ public class FindCustomerFactoryToOutput implements IFactoryToOutput<Customer, F
     @Override
     public FindCustomerOutput convert(final Customer input) {
 
-        return new FindCustomerOutput(input.getId(), input.getName(), new FindCustomerAddressOutput(input.getAddress().street(),
-                input.getAddress().city(), input.getAddress().state(), input.getAddress().zipCode()));
+        return new FindCustomerOutput(input.getId(), input.getName(), new FindCustomerAddressOutput(input.getAddress().getStreet(),
+                input.getAddress().getCity(), input.getAddress().getState(), input.getAddress().getZipCode()));
     }
 }

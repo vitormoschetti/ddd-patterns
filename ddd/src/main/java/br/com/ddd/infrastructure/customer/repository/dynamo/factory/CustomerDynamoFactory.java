@@ -8,8 +8,8 @@ import br.com.ddd.infrastructure.shared.factory.IFactory;
 public class CustomerDynamoFactory implements IFactory<Customer, ICustomerModel> {
     @Override
     public ICustomerModel convert(final Customer input) {
-        return new CustomerDynamoModel(input.getId(), input.getName(), input.getAddress().street(),
-                input.getAddress().city(), input.getAddress().state(), input.getAddress().zipCode(),
+        return new CustomerDynamoModel(input.getId(), input.getName(), input.getAddress().getStreet(),
+                input.getAddress().getCity(), input.getAddress().getState(), input.getAddress().getZipCode(),
                 input.getRewardPoints(), input.isActive());
     }
 }

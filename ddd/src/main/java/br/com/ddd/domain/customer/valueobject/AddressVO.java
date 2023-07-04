@@ -1,13 +1,21 @@
 package br.com.ddd.domain.customer.valueobject;
 
+import br.com.ddd.domain.shared.entity.BaseEntity;
 import br.com.ddd.domain.shared.entity.IValueObject;
-import br.com.ddd.domain.shared.entity.exception.DomainException;
+import br.com.ddd.domain.shared.notification.DomainNotification;
+import br.com.ddd.domain.shared.notification.DomainNotificationError;
 
 import java.util.Objects;
 
-public record AddressVO(String street, String city, String state, String zipCode) implements IValueObject {
+public class AddressVO extends BaseEntity implements IValueObject {
+
+    private final String street;
+    private final String city;
+    private final String state;
+    private final String zipCode;
 
     public AddressVO(final String street, final String city, final String state, final String zipCode) {
+        super(new DomainNotification());
         this.street = street;
         this.city = city;
         this.state = state;
@@ -17,13 +25,29 @@ public record AddressVO(String street, String city, String state, String zipCode
 
     public void validate() {
         if (Objects.isNull(this.street) || this.street.isBlank())
-            throw new DomainException("Street is required");
+            this.addMessage(new DomainNotificationError("Street is required", this.getClass().getSimpleName()));
         if (Objects.isNull(this.city) || this.city.isBlank())
-            throw new DomainException("City is required");
+            this.addMessage(new DomainNotificationError("City is required", this.getClass().getSimpleName()));
         if (Objects.isNull(this.state) || this.state.isBlank())
-            throw new DomainException("State is required");
+            this.addMessage(new DomainNotificationError("State is required", this.getClass().getSimpleName()));
         if (Objects.isNull(this.zipCode) || this.zipCode.isBlank())
-            throw new DomainException("ZipCode is required");
+            this.addMessage(new DomainNotificationError("ZipCode is required", this.getClass().getSimpleName()));
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
     }
 
     @Override

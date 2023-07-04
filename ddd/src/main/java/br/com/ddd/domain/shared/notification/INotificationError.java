@@ -6,8 +6,4 @@ public interface INotificationError {
 
     String context();
 
-    String action();
-
-    String location();
-
 }
